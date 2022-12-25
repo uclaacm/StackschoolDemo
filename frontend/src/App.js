@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+
+const URL = 'http://localhost:3001';
 
 function App() {
+  const [posts, setPosts] = useState([]);
+
+  //Gets the entire feed
+  async function getFeed() {
+    try {
+      const response = await axios.get(URL + '/feed');
+      setPosts(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    getFeed();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <p>hi</p>
+      {posts.map((post) => (
+        <p key={post._id}>{post.content}</p>
+      ))}
     </div>
   );
 }
