@@ -1,13 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Silkscreen&display=swap');
+
+:root {
+  --primary: #c960ff;
+  --alt-one: #c137d8;
+  --dark: #3e2961;
+  --accent: #ff477e;
+  --grad-begin: #bd00ff;
+  --grad-end: #ff5f96;
+}
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Open Sans';
 }
 
+body {
+  background-color: var(--dark);
+  color: white;
+}
+
+/* Wrap parent divs for pages with App class */
 .App {
-  margin: 5rem;
+  margin: 1rem 5rem;
   justify-content: center;
   text-align: center;
 }

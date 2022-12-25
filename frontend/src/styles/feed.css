@@ -1,0 +1,81 @@
+.feed {
+  margin: 0 13rem 5rem;
+}
+
+.button {
+  padding: 0.7rem 5rem;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  background-image: linear-gradient(
+    to right,
+    var(--grad-begin),
+    var(--grad-end)
+  );
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.message {
+  display: flex;
+  margin: 2rem 3rem;
+  justify-content: center;
+}
+
+.messageInput {
+  appearance: none;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+  width: 60%;
+  box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.2);
+  font-size: 1.5rem;
+  padding-left: 3rem;
+}
+
+.feedPost {
+  text-align: left;
+}
+
+.feedPost h4 {
+  margin-top: 2.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+.text {
+  position: relative;
+  background-color: #fff;
+  color: black;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  display: flex;
+  align-items: center;
+  transition: 0.5s;
+  justify-content: space-between;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.like {
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  width: 10%;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.like img {
+  width: 30%;
+}
