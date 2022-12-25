@@ -1,0 +1,60 @@
+//USERS TEST
+
+POST http://localhost:3001/users/new
+Content-Type: application/json
+
+{
+	"username": "thanos",
+    "password": "ACM Hack"
+}
+
+###
+
+DELETE http://localhost:3001/users/delete/63a7a0fdfa994d8dc928c23a
+
+###
+
+GET http://localhost:3001/users
+
+###
+
+PUT http://localhost:3001/users/edit/63a7a0cdfa994d8dc928c238
+Content-Type: application/json
+
+{
+	"username": "I AM CHANGED!!!",
+    "password": "ooga booga"
+}
+
+###
+
+//POSTS TEST
+
+POST http://localhost:3001/feed/new
+Content-Type: application/json
+
+{
+	"content": "elon musk is not so great",
+    "user": "jams"
+}
+
+###
+
+DELETE http://localhost:3001/feed/delete/63a7a417a98d7d3c45701b47
+
+###
+
+GET http://localhost:3001/feed
+
+###
+
+PUT http://localhost:3001/feed/edit/63a7a43aa98d7d3c45701b49
+Content-Type: application/json
+
+{
+	"content": "I AM CHANGED!!!"
+}
+
+###
+
+PUT http://localhost:3001/feed/update/63a7a43aa98d7d3c45701b49
