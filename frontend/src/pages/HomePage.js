@@ -1,10 +1,10 @@
-import './App.css';
+import '../styles/HomePage.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 const URL = 'http://localhost:3001';
 
-function App() {
+function HomePage() {
   const [posts, setPosts] = useState([]);
 
   //Gets the entire feed
@@ -31,4 +31,4 @@ function App() {
   );
 }
 
-export default App;
+export default HomePage;
