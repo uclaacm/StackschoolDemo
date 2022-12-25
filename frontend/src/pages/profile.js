@@ -9,9 +9,11 @@ const URL = 'http://localhost:3001';
 function ProfilePage() {
     return (
         <div className='App'>
-            <p>profile page</p>
+            <p>Here is the profile page</p>
         </div>
     );
 }
 
 export default ProfilePage;
+
+// User context with authentication tutorial: https://soshace.com/react-user-login-authentication-using-usecontext-and-usereducer/
