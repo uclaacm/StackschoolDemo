@@ -3,7 +3,6 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import UserPost from '../components/UserPost';
 import FeedPost from '../components/FeedPost';
-// import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 const URL = 'http://localhost:3001';
 
@@ -51,7 +50,6 @@ function FeedPage() {
 
   return (
     <div className='App feed'>
-      {/* <Link to='/profile'>Profile</Link> */}
       <UserPost newPost={newPost} setNewPost={setNewPost} addPost={addPost} />
       {posts
         .map((post) => (
