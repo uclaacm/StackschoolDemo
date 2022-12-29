@@ -2,6 +2,12 @@
   margin: 0 13rem 5rem;
 }
 
+.userPrompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .button {
   padding: 0.7rem 5rem;
   border-top-right-radius: 999px;
@@ -20,8 +26,8 @@
 
 .message {
   display: flex;
-  margin: 2rem 3rem;
-  justify-content: center;
+  width: 100%;
+  justify-content: flex-end;
 }
 
 .messageInput {
@@ -30,7 +36,7 @@
   background-color: #fff;
   border-top-left-radius: 999px;
   border-bottom-left-radius: 999px;
-  width: 60%;
+  width: 68%;
   box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.2);
   font-size: 1.5rem;
   padding-left: 3rem;
@@ -68,7 +74,7 @@
   background-color: var(--primary);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   padding: 1.5rem;
   width: 10%;
   border-top-right-radius: 16px;
@@ -77,4 +83,8 @@
 
 .like img {
   width: 30%;
+}
+
+.like:hover {
+  cursor: pointer;
 }

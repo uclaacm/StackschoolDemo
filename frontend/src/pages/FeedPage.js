@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import UserPost from '../components/UserPost';
 import FeedPost from '../components/FeedPost';
+import ProfileButton from '../components/ProfileButton';
 
 const URL = 'http://localhost:3001';
 
@@ -44,16 +45,38 @@ function FeedPage() {
     setNewPost('');
   }
 
+  async function incrementLike(id) {
+    axios
+      .put(URL + '/feed/update/' + id)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   useEffect(() => {
     getFeed();
   }, [posts]);
 
   return (
     <div className='App feed'>
-      <UserPost newPost={newPost} setNewPost={setNewPost} addPost={addPost} />
+      <div className='userPrompt'>
+        <ProfileButton />
+        <UserPost newPost={newPost} setNewPost={setNewPost} addPost={addPost} />
+      </div>
+
       {posts
         .map((post) => (
-          <FeedPost key={post._id} content={post.content} user={post.user} />
+          <FeedPost
+            key={post._id}
+            content={post.content}
+            user={post.user}
+            likes={post.num_likes}
+            incrementLike={incrementLike}
+            id={post._id}
+          />
         ))
         .reverse()}
     </div>

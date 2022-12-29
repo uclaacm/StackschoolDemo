@@ -7,7 +7,7 @@ function UserPost({ newPost, setNewPost, addPost }) {
         type='text'
         className='messageInput'
         onChange={(e) => setNewPost(e.target.value)}
-        placeholder='What the Hack are you doing?'
+        placeholder='What the Hack are you up to?'
         value={newPost}
       />
       <div
