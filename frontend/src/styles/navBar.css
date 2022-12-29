@@ -9,15 +9,15 @@
   display: flex;
 }
 
-a {
+.hack {
+  display: flex;
+}
+
+.hack a {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   margin-right: 0.6rem;
-}
-
-.hack {
-  display: flex;
 }
 
 #lightbulb {
@@ -28,17 +28,6 @@ a {
 #hackText {
   width: 12%;
 }
-
-/* .pfp {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.pfp img {
-  width: 12%;
-  border-radius: 50%;
-} */
 
 .link {
   margin-right: 1rem;

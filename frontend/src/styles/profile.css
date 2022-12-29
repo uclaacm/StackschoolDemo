@@ -1,4 +1,51 @@
+.profile {
+  margin: 0 13rem 5rem;
+  text-align: left;
+}
+
+.profile p {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.return {
+  margin: 2rem 0 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #profileImg {
-  width: 9%;
+  width: 100%;
   border-radius: 50%;
+}
+
+.profileLink {
+  display: inline-block;
+  width: 10%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 3rem;
+}
+
+.info p {
+  font-size: 2.3rem;
+  font-weight: 700;
+}
+
+/* Class chaining for elements on profile page */
+.return .profileLink {
+  width: 20%;
+}
+
+.return .button {
+  border-radius: 999px;
+  text-decoration: none;
+  color: white;
+  margin-top: 2rem;
 }

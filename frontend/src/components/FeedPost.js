@@ -16,7 +16,7 @@ function FeedPost({ content, user, likes, incrementLike, id }) {
             incrementLike(id);
           }}
         >
-          <img src={Heart} />
+          <img src={Heart} alt='Heart' />
           <p>{likes}</p>
         </div>
       </div>

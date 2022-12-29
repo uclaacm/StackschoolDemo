@@ -16,9 +16,9 @@ function NavBar() {
         </NavLink>
       </div>
       <div className='hack'>
-        <a href='https://hack.uclaacm.com/' target='_blank'>
-          <img src={HackLogo} id='lightbulb' />
-          <img src={HackLogoText} id='hackText' />
+        <a href='https://hack.uclaacm.com/' target='_blank' rel='noreferrer'>
+          <img src={HackLogo} id='lightbulb' alt='Hack Logo' />
+          <img src={HackLogoText} id='hackText' alt='Hack Logo' />
         </a>
       </div>
     </div>
