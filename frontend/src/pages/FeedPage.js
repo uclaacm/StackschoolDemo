@@ -56,6 +56,17 @@ function FeedPage() {
       });
   }
 
+  async function deletePost(id) {
+    axios
+      .delete(URL + '/feed/delete/' + id)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   useEffect(() => {
     getFeed();
   }, [posts]);
@@ -75,6 +86,7 @@ function FeedPage() {
             user={post.user}
             likes={post.num_likes}
             incrementLike={incrementLike}
+            deletePost={deletePost}
             id={post._id}
           />
         ))

@@ -2,6 +2,23 @@
   margin: 0 13rem 5rem;
 }
 
+.postTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.hover {
+  width: 2%;
+}
+.hover img {
+  width: 100%;
+}
+
+.hover :hover {
+  cursor: pointer;
+}
+
 .userPrompt {
   display: flex;
   align-items: center;

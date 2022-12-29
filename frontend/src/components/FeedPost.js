@@ -1,10 +1,21 @@
 import React from 'react';
 import Heart from '../img/White-Heart.png';
+import Trash from '../img/Trash-Icon.png';
 
-function FeedPost({ content, user, likes, incrementLike, id }) {
+function FeedPost({ content, user, likes, incrementLike, deletePost, id }) {
   return (
     <div className='feedPost'>
-      <h4>{user}</h4>
+      <div className='postTop'>
+        <h4>{user}</h4>
+        <div
+          className='hover'
+          onClick={() => {
+            deletePost(id);
+          }}
+        >
+          <img src={Trash} alt='Trash' />
+        </div>
+      </div>
 
       <div className='content'>
         <div className='text'>
