@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
  
 let username = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser")).username
+  ? JSON.parse(localStorage.getItem("currentUser")).user
   : "";
 let token = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).token

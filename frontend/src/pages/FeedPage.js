@@ -14,6 +14,8 @@ function FeedPage() {
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState('');
 
+  const userDetails = useAuthState();
+
   //Gets the entire feed
   async function getFeed() {
     try {
@@ -25,7 +27,6 @@ function FeedPage() {
   }
 
   //Lets user add new post
-  //TBD: passing in user value
   async function addPost() {
     //Catches if user doesn't enter text
     if (newPost === '') {
@@ -36,7 +37,7 @@ function FeedPage() {
     axios
       .post(URL + '/feed/new', {
         content: newPost,
-        user: 'placeholder user (TODO)',
+        user: userDetails.username,
       })
       .then(function (response) {
         console.log(response);

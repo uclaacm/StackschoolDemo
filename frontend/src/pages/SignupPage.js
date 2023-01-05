@@ -16,26 +16,26 @@ function SignupPage() {
 
     const navigate = useNavigate();
 
+    // TODO: Doesn't log in after creating user properly
     const createUser = async () => {
-        axios.post(URL + '/users/new', {
+        const res = await axios.post(URL + '/users/new', {
             username: username,
             password: password
-        }).then(handleLogin());
+        });
+        handleLogin();
     }
 
     const handleLogin = async (err) => {
         const payload = {
             username: username,
             password: password,
-            token: 'myspecialtoken'
         }
+        console.log(payload)
         try {
             const res = await loginUser(dispatch, payload);
             if (!res) return;
             else {
-                console.log('should nav')
                 navigate('/feed');
-                console.log('navigated to feed')
             }
         } catch (error) {
             console.log(error);

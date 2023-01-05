@@ -116,3 +116,9 @@ app.put('/feed/update/:_id', async (req, res) => {
 
   res.json(post);
 });
+
+app.get('/feed/:username', async (req, res) => {
+  const posts = await Post.find({ user : req.params.username });
+
+  res.json(posts)
+})

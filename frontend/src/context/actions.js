@@ -12,11 +12,9 @@ export async function loginUser(dispatch, loginPayload) {
         if (data.username) { // valid login
             dispatch({ type: 'LOGIN_SUCCESS', payload: data});
             localStorage.setItem('currentUser', JSON.stringify(data));
-            console.log("completed login")
             return data;
         }
         dispatch({ type: 'LOGIN_ERROR', error: data.error});
-        console.log("completed error login")
         return;
     }
     catch (error) {
