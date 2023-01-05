@@ -4,13 +4,22 @@ POST http://localhost:3001/users/new
 Content-Type: application/json
 
 {
-	"username": "thanos",
-    "password": "ACM Hack"
+	"username": "nate",
+    "password": "password"
 }
 
 ###
 
 DELETE http://localhost:3001/users/delete/63a7a0fdfa994d8dc928c23a
+
+###
+POST http://localhost:3001/login
+Content-Type: application/json
+
+{
+	"username" : "nate",
+	"password" : "pasword"
+}
 
 ###
 

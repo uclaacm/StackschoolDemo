@@ -2,7 +2,9 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import '../styles/profile.css';
 import ProfileButton from '../components/ProfileButton';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useAuthDispatch, useAuthState } from '../context';
+import { logout } from '../context/actions';
 
 const URL = 'http://localhost:3001';
 
@@ -14,6 +16,13 @@ function ProfilePage() {
   //Get the posts related to user
   // async function getPosts() {
   // }
+  const navigate = useNavigate();
+  const dispatch = useAuthDispatch();
+  const handleLogout = () => {
+    logout(dispatch)
+    navigate('/login')
+    return;
+  }
 
   return (
     <div className='App profile'>
@@ -21,9 +30,9 @@ function ProfilePage() {
         <ProfileButton />
         <div className='info'>
           <p>Welcome, *Username here*</p>
-          <NavLink to='/feed' className='button'>
-            Return to Feed
-          </NavLink>
+          <button onClick={handleLogout} className='button'>
+            Logout
+          </button>
         </div>
       </div>
       <p>Your Posts</p>

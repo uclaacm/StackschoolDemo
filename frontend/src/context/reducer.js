@@ -1,14 +1,14 @@
 import React, { useReducer } from "react";
  
-let user = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser")).user
+let username = localStorage.getItem("currentUser")
+  ? JSON.parse(localStorage.getItem("currentUser")).username
   : "";
 let token = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser")).auth_token
+  ? JSON.parse(localStorage.getItem("currentUser")).token
   : "";
  
 export const initialState = {
-  userDetails: "" || user,
+  userDetails: "" || username,
   token: "" || token,
   loading: false,
   errorMessage: null
@@ -24,14 +24,15 @@ export const AuthReducer = (initialState, action) => {
     case "LOGIN_SUCCESS":
       return {
         ...initialState,
-        user: action.payload.user,
-        token: action.payload.auth_token,
-        loading: false
+        username: action.payload.username,
+        token: action.payload._id,
+        loading: false,
+        errorMessage: null
       };
     case "LOGOUT":
       return {
         ...initialState,
-        user: "",
+        username: "",
         token: ""
       };
  

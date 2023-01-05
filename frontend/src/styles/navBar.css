@@ -5,6 +5,10 @@
   justify-content: space-between;
 }
 
+.main {
+  height: 100%;
+}
+
 .nav {
   display: flex;
 }

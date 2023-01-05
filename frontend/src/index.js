@@ -1,21 +1,18 @@
 import React from 'react';
 import './styles/globals.css';
 import ReactDOM from 'react-dom/client';
-import FeedPage from './pages/FeedPage';
-import ProfilePage from './pages/ProfilePage';
+import { AuthProvider, useAuthState } from './context';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from './pages/Layout';
+import App from './pages/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route path='/profile' element={<ProfilePage />} />
-          <Route path='/feed' element={<FeedPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <App/>
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>
 );

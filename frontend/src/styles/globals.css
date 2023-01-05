@@ -18,6 +18,11 @@
 body {
   background-color: var(--dark);
   color: white;
+  height: 100%;
+}
+
+html {
+  height: 100%;
 }
 
 /* Wrap parent divs for pages with App class */
@@ -25,6 +30,7 @@ body {
   margin: 1rem 5rem;
   justify-content: center;
   text-align: center;
+  height: 100%;
 }
 
 /* Button (must override radius) */

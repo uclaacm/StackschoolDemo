@@ -4,6 +4,9 @@ import React, { useState, useEffect } from 'react';
 import UserPost from '../components/UserPost';
 import FeedPost from '../components/FeedPost';
 import ProfileButton from '../components/ProfileButton';
+import { useAuthState, useAuthDispatch } from '../context/context.js';
+import { Navigate } from 'react-router-dom';
+
 
 const URL = 'http://localhost:3001';
 

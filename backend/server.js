@@ -32,6 +32,22 @@ app.get('/users', async (req, res) => {
   res.json(users);
 });
 
+app.post('/login', async (req, res) => {
+  const user = await User.findOne({username: req.body.username});
+  if (!user) {
+    res.json({ 'error': 'That username doesn\'t exist'})
+    return;
+  }
+  if (user.comparePassword(req.body.password, function(err, isMatch) {
+    if (err) throw err;
+    if (isMatch) {
+      res.json(user);
+    } else {
+      res.json({ 'error': 'Incorrect password'})
+    }
+  }));
+});
+
 app.post('/users/new', (req, res) => {
   const user = new User({
     username: req.body.username,
