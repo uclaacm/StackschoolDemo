@@ -4,8 +4,7 @@ import React, { useState, useEffect } from 'react';
 import UserPost from '../components/UserPost';
 import FeedPost from '../components/FeedPost';
 import ProfileButton from '../components/ProfileButton';
-import { useAuthState, useAuthDispatch } from '../context/context.js';
-import { Navigate } from 'react-router-dom';
+import { useAuthState } from '../context/context.js';
 
 
 const URL = 'http://localhost:3001';
@@ -60,17 +59,6 @@ function FeedPage() {
       });
   }
 
-  async function deletePost(id) {
-    axios
-      .delete(URL + '/feed/delete/' + id)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
   useEffect(() => {
     getFeed();
   }, [posts]);
@@ -90,8 +78,8 @@ function FeedPage() {
             user={post.user}
             likes={post.num_likes}
             incrementLike={incrementLike}
-            deletePost={deletePost}
             id={post._id}
+            timestamp={post.timestamp}
           />
         ))
         .reverse()}

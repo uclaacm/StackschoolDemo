@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/navBar.css';
 import { Outlet, Navigate, Route, Routes } from 'react-router-dom';
 import NavBar from '../components/Navbar';
-import { useAuthState, useAuthDispatch } from '../context/context.js';
+import { useAuthState } from '../context/context.js';
 import LoginPage from './LoginPage';
 import FeedPage from './FeedPage';
 import ProfilePage from './ProfilePage';
@@ -10,7 +10,6 @@ import SignupPage from './SignupPage';
 
 const ProtectedRoute = ({ redirectPath = '/login', children }) => {
   const userDetails = useAuthState();
-  console.log(userDetails);
   if (!userDetails.token) {
     return <Navigate to={redirectPath} />;
   }

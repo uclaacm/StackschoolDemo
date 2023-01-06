@@ -48,13 +48,18 @@ app.post('/login', async (req, res) => {
   }));
 });
 
-app.post('/users/new', (req, res) => {
+app.post('/users/new', async (req, res) => {
+  const dupUser = await User.findOne({username: req.body.username});
+  if (dupUser) {
+    res.json({ 'error' : 'Duplicate username exists.'})
+    return;
+  }
   const user = new User({
     username: req.body.username,
     password: req.body.password,
   });
 
-  user.save();
+  await user.save();
 
   res.json(user);
 });
@@ -86,6 +91,7 @@ app.post('/feed/new', (req, res) => {
   const post = new Post({
     content: req.body.content,
     user: req.body.user,
+    timestamp: Date.now(),
   });
 
   post.save();

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import '../styles/profile.css';
+import '../styles/feed.css';
 import FeedPost from '../components/FeedPost';
 import ProfileButton from '../components/ProfileButton';
 import { useNavigate } from 'react-router-dom';
@@ -10,18 +11,17 @@ import { logout } from '../context/actions';
 const URL = 'http://localhost:3001';
 
 function ProfilePage() {
-  const [userPosts, setUserPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   // Get the posts related to user
-  // TODO: Doesn't display posts after fulfilling req
   async function getPosts() {
     try {
       const response = await axios.get(URL + '/feed/' + userDetails.username);
-      setUserPosts(response.data);
+      setPosts(response.data);
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   async function incrementLike(id) {
     axios
@@ -33,8 +33,7 @@ function ProfilePage() {
         console.log(error);
       });
   }
-  
-  // TODO: Move deletePost function to profile page only
+
   async function deletePost(id) {
     axios
       .delete(URL + '/feed/delete/' + id)
@@ -48,7 +47,7 @@ function ProfilePage() {
 
   useEffect(() => {
     getPosts();
-  }, [userPosts])
+  }, [posts]);
 
   const navigate = useNavigate();
   const dispatch = useAuthDispatch();
@@ -60,6 +59,7 @@ function ProfilePage() {
 
   const userDetails = useAuthState();
 
+  // TODO: fix CSS so that posts look the same on profile page
   return (
     <div className='App profile'>
       <div className='return'>
@@ -72,25 +72,21 @@ function ProfilePage() {
         </div>
       </div>
       <p>Your Posts</p>
-      { userPosts ? 
-      userPosts.map((post) => {
-        <div>
-        <FeedPost
-          key={post._id}
-          content={post.content}
-          user={post.user}
-          likes={post.num_likes}
-          incrementLike={incrementLike}
-          deletePost={deletePost}
-          id={post._id}
-        />
-        <p>A post</p>
-        </div>
-      }).reverse()
-      :
-      <p>No posts yet!</p>
+      {
+        posts.map((post) => (
+          <FeedPost
+            key={post._id}
+            content={post.content}
+            likes={post.num_likes}
+            incrementLike={incrementLike}
+            deletePost={deletePost}
+            id={post._id}
+            timestamp={post.timestamp}
+          />
+        )).reverse()
       }
     </div>
+
   );
 }
 

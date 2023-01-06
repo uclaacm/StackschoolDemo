@@ -20,6 +20,12 @@
   cursor: pointer;
 }
 
+.date {
+  text-align: right;
+  font-style: italic;
+  padding: 0.5rem;
+}
+
 .userPrompt {
   display: flex;
   align-items: center;

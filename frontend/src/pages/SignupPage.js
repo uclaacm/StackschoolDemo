@@ -1,6 +1,6 @@
 import '../styles/login.css';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useAuthState, useAuthDispatch } from '../context/context.js';
 import { loginUser } from '../context/actions.js';
@@ -16,13 +16,25 @@ function SignupPage() {
 
     const navigate = useNavigate();
 
-    // TODO: Doesn't log in after creating user properly
     const createUser = async () => {
-        const res = await axios.post(URL + '/users/new', {
-            username: username,
-            password: password
-        });
-        handleLogin();
+        try {
+            dispatch({ type: 'REQUEST_SIGNUP' });
+            const res = await axios.post(URL + '/users/new', {
+                username: username,
+                password: password
+            });
+            const data = res.data;
+            console.log(data)
+            if (!data.error) { // valid signup 
+                dispatch({ type: 'SIGNUP_SUCCESS', payload: data});
+                handleLogin();
+            }
+            else {
+                dispatch({ type: 'SIGNUP_ERROR', payload: data.error });
+            }
+        } catch (err) {
+            dispatch({ type: 'SIGNUP_ERROR', error: err})
+        }
     }
 
     const handleLogin = async (err) => {

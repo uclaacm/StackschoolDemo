@@ -1,6 +1,5 @@
 import '../styles/login.css';
-import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useAuthState, useAuthDispatch } from '../context/context.js';
 import { loginUser } from '../context/actions.js';
@@ -22,7 +21,6 @@ function LoginPage() {
         const payload = {
             username: username,
             password: password,
-            token: 'myspecialtoken'
         }
         try {
             const res = await loginUser(dispatch, payload);

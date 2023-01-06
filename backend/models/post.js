@@ -15,8 +15,7 @@ const PostSchema = new Schema({
         default: 0
     },
     timestamp: {
-        type: String,
-        default: Date.now()
+        type: Number
     }
 });
 

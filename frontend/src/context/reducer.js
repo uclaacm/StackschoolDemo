@@ -1,5 +1,3 @@
-import React, { useReducer } from "react";
- 
 let username = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).user
   : "";
@@ -21,6 +19,19 @@ export const AuthReducer = (initialState, action) => {
         ...initialState,
         loading: true
       };
+    case "REQUEST_SIGNUP":
+      return {
+        ...initialState,
+        loading: true
+      };
+    case "SIGNUP_SUCCESS":
+      return {
+        ...initialState,
+        loading: false,
+        username: action.payload.username,
+        token: action.payload._id,
+        errorMessage: null
+      };
     case "LOGIN_SUCCESS":
       return {
         ...initialState,
@@ -35,7 +46,12 @@ export const AuthReducer = (initialState, action) => {
         username: "",
         token: ""
       };
- 
+    case "SIGNUP_ERROR":
+      return {
+        ...initialState,
+        loading: false,
+        errorMessage: action.payload
+      };
     case "LOGIN_ERROR":
       return {
         ...initialState,
