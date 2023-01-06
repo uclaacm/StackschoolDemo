@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import '../styles/profile.css';
-import '../styles/feed.css';
 import FeedPost from '../components/FeedPost';
 import ProfileButton from '../components/ProfileButton';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +20,7 @@ function ProfilePage() {
     } catch (err) {
       console.error(err);
     }
-  };
+  }
 
   async function incrementLike(id) {
     axios
@@ -52,14 +51,13 @@ function ProfilePage() {
   const navigate = useNavigate();
   const dispatch = useAuthDispatch();
   const handleLogout = () => {
-    logout(dispatch)
-    navigate('/login')
+    logout(dispatch);
+    navigate('/login');
     return;
-  }
+  };
 
   const userDetails = useAuthState();
 
-  // TODO: fix CSS so that posts look the same on profile page
   return (
     <div className='App profile'>
       <div className='return'>
@@ -71,9 +69,9 @@ function ProfilePage() {
           </button>
         </div>
       </div>
-      <p>Your Posts</p>
-      {
-        posts.map((post) => (
+      <p style={{ fontSize: '1.5rem', fontWeight: '700' }}>Your Posts</p>
+      {posts
+        .map((post) => (
           <FeedPost
             key={post._id}
             content={post.content}
@@ -83,10 +81,9 @@ function ProfilePage() {
             id={post._id}
             timestamp={post.timestamp}
           />
-        )).reverse()
-      }
+        ))
+        .reverse()}
     </div>
-
   );
 }
 

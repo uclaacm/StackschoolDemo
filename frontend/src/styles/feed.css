@@ -10,10 +10,11 @@
 }
 
 .hover {
+  margin-top: 0.5rem;
   width: 2%;
 }
 .hover img {
-  width: 100%;
+  width: 80%;
 }
 
 .hover :hover {
@@ -30,6 +31,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .message .button {
@@ -58,11 +60,9 @@
 
 .feedPost {
   text-align: left;
-  margin-bottom: 1rem;
 }
 
 .feedPost h4 {
-  margin-top: 2.2rem;
   margin-bottom: 0.6rem;
 }
 
