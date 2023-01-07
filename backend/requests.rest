@@ -1,24 +1,26 @@
 //USERS TEST
 
-POST http://localhost:3001/users/new
+POST http://localhost:3001/feed/like
 Content-Type: application/json
 
 {
 	"username": "nate",
-    "password": "password"
+    "postId": "63b7ebe0561e54333b4ba518"
 }
+
+###
+GET http://localhost:3001/post/numlikes
 
 ###
 
 DELETE http://localhost:3001/users/delete/63a7a0fdfa994d8dc928c23a
 
 ###
-POST http://localhost:3001/login
+GET http://localhost:3001/post/numlikes
 Content-Type: application/json
 
 {
-	"username" : "nat",
-	"password" : "password"
+	"postId" : "63b7eabb561e54333b4b8651"
 }
 
 ###

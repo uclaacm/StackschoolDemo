@@ -24,6 +24,7 @@ app.listen(3001, () => console.log('Server listening on port 3001'));
 
 const User = require('./models/users');
 const Post = require('./models/post');
+const UserPost = require('./models/userPost');
 
 //Users endpoints
 app.get('/users', async (req, res) => {
@@ -81,6 +82,8 @@ app.put('/users/edit/:_id', async (req, res) => {
 });
 
 //Posts endpoints
+
+// TODO: populate feed with the likes from UserPosts joined
 app.get('/feed', async (req, res) => {
   const feed = await Post.find();
 
@@ -127,4 +130,38 @@ app.get('/feed/:username', async (req, res) => {
   const posts = await Post.find({ user : req.params.username });
 
   res.json(posts)
+})
+
+
+// UserPosts endpoints
+// To like/dislike a post
+app.post('/feed/like', async (req, res) => {
+  const exists = await UserPost.find(
+    { user: req.body.username, postId: req.body.postId }
+  );
+  if (exists.length != 0) { // User has clicked before
+    const liked = exists[0].liked;
+    const action = await UserPost.updateOne(
+      { user: req.body.username, postId: req.body.postId },
+      { liked: !liked }
+    )
+    res.json(action)
+    return;
+  } else { // User has never clicked before
+    const action = new UserPost(
+      { user: req.body.username, postId: req.body.postId, liked: true }
+    );
+    action.save()
+    res.json(action)
+  }
+})
+
+// To get numlikes per post
+app.get('/post/numlikes', async (req, res) => {
+  const response = UserPost.countDocuments(
+    { postId : req.body.postId, liked: true },
+    function (err, count) {
+      res.json(count);
+    }
+  );
 })
