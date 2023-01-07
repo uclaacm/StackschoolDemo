@@ -14,6 +14,7 @@ function LoginPage() {
     const navigate = useNavigate();
 
     const handleSignup = () => {
+        dispatch({'type' : 'NEW_ACTION'})
         navigate('/signup')
     }
 

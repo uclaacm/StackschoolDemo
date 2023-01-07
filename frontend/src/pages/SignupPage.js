@@ -37,6 +37,11 @@ function SignupPage() {
         }
     }
 
+    function goBack() {
+        dispatch({'type': 'NEW_ACTION'});
+        navigate('/login')
+    }
+
     const handleLogin = async (err) => {
         const payload = {
             username: username,
@@ -80,7 +85,7 @@ function SignupPage() {
                     <button className='login_button' onClick={createUser} disabled={loading}>
                         sign up
                     </button>
-                    <button className='signup_button' onClick={() => navigate('/login')}>back</button>
+                    <button className='signup_button' onClick={goBack}>back</button>
                 </div>
             </div>
         </div>

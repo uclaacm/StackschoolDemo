@@ -58,7 +58,11 @@ export const AuthReducer = (initialState, action) => {
         loading: false,
         errorMessage: action.error
       };
- 
+    case "NEW_ACTION":
+      return {
+        ...initialState,
+        errorMessage: ""
+      };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
