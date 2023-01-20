@@ -85,7 +85,10 @@ app.put('/users/edit/:_id', async (req, res) => {
 
 // TODO: populate feed with the likes from UserPosts joined
 app.get('/feed', async (req, res) => {
-  const feed = await Post.find();
+  const feed = await Post.find()
+    .populate(
+      'postId'
+    );
 
   res.json(feed);
 });
@@ -157,8 +160,9 @@ app.post('/feed/like', async (req, res) => {
 })
 
 // To get numlikes per post
+// TODO: no longer works
 app.get('/post/numlikes', async (req, res) => {
-  const response = UserPost.countDocuments(
+  const response = await UserPost.countDocuments(
     { postId : req.body.postId, liked: true },
     function (err, count) {
       res.json(count);

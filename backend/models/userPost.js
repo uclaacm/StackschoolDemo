@@ -7,8 +7,9 @@ const UserPostSchema = new Schema({
         required: true
     },
     postId: {
-        type: String,
-        required: true
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'Post'
     },
     liked: {
         type: Boolean,

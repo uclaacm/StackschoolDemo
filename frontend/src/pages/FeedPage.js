@@ -18,7 +18,8 @@ function FeedPage() {
   //Gets the entire feed
   async function getFeed() {
     try {
-      const response = await axios.get(URL + '/feed');
+      const response = await axios.get(URL + '/feed',
+      { username : userDetails.username });
       setPosts(response.data);
     } catch (error) {
       console.error(error);
