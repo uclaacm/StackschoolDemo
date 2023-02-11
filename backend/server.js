@@ -11,7 +11,7 @@ mongoose.set('strictQuery', false);
 
 mongoose
   .connect(
-    'mongodb+srv://jamesw:fEEq4PJO8brPiG7V@app.n7kcunu.mongodb.net/test',
+    'mongodb+srv://jamesw:<password>@app.n7kcunu.mongodb.net/test',
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
